@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>在线阅读</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%238e2f2c'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>医</text></svg>">
+</head>
+<body>
+<div class="reader" id="reader">
+
+  <aside class="side" id="side">
+    <div class="side-head">
+      <a class="back-btn" href="index.html" title="返回书库" aria-label="返回书库">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <div class="side-title">
+        <h2 id="bTitle">加载中…</h2>
+        <p id="bSub">—</p>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-tab="toc">目录</button>
+      <button class="tab" data-tab="thumbs">缩略图</button>
+    </div>
+    <div class="tab-body" id="tabToc"><ul class="toc-list" id="toc"></ul></div>
+    <div class="tab-body" id="tabThumbs" hidden><div class="thumbs" id="thumbs"></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="icon-btn" id="sideBtn" title="目录 (M)" aria-label="切换目录">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <span class="tb-title" id="tbTitle">—</span>
+      <span class="tb-sub" id="tbSub"></span>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="searchBtn" title="全文检索 (S)" aria-label="全文检索">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      </button>
+      <div class="zoom-group">
+        <button id="zOut" title="缩小 (-)">−</button>
+        <span class="zoom-label" id="zLabel">适应</span>
+        <button id="zIn" title="放大 (+)">＋</button>
+        <button id="zFit" class="on" title="自适应宽度">适宽</button>
+      </div>
+      <button class="icon-btn" id="fullBtn" title="全屏 (F)" aria-label="全屏">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </button>
+      <button class="icon-btn" id="themeBtn" title="深色模式" aria-label="深色模式">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </div>
+
+    <div class="view-wrap" id="viewWrap">
+      <div class="view" id="view">
+        <div class="page-card" id="pageCard">
+          <img id="pageImg" alt="">
+          <div class="spin"><i></i></div>
+        </div>
+      </div>
+      <button class="nav-edge prev" id="edgePrev" aria-label="上一页">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="nav-edge next" id="edgeNext" aria-label="下一页">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <div class="search-panel" id="searchPanel">
+        <div class="sp-head">
+          <div class="row">
+            <h3>全文检索</h3>
+            <button class="icon-btn" id="spClose" aria-label="关闭">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <label class="sp-input">
+            <svg class="ico" viewBox="0 0 24 24" style="width:15px;height:15px;color:var(--muted)"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+            <input id="spInput" type="search" placeholder="输入关键词，例如：心力衰竭" autocomplete="off">
+          </label>
+        </div>
+        <div class="sp-body" id="spBody">
+          <p class="sp-hint">在本书正文中检索关键词，点击结果直接跳转到对应书页。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottombar">
+      <div class="pager">
+        <button class="pbtn" id="prevBtn" aria-label="上一页">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="pbtn" id="nextBtn" aria-label="下一页">
+          <svg class="ico" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div class="slider">
+        <input type="range" id="slider" min="1" max="1" value="1" aria-label="拖动翻页">
+      </div>
+      <div class="pnum">
+        <input id="pInput" type="text" inputmode="numeric" value="1" aria-label="跳转页码">
+        <span>/ <span id="pTotal">1</span></span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="toast" id="toast"><span id="toastText"></span><button id="toastAct" hidden></button></div>
+
+<script src="assets/js/reader.js"></script>
+</body>
+</html>

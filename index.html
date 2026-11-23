@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>人卫医学教材 · 在线阅读</title>
+<meta name="description" content="人民卫生出版社医学教材第9/10版电子版在线翻阅：解剖、生理、病理、诊断、内外妇儿、神经、精神、眼科、麻醉、中医。">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%238e2f2c'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='white' font-family='serif'>医</text></svg>">
+</head>
+<body>
+<main class="lib">
+  <header class="lib-head">
+    <div class="brand">
+      <div class="brand-mark">医</div>
+      <div>
+        <h1>人卫医学教材 · 在线阅读</h1>
+        <p id="libSub">正在加载书库…</p>
+      </div>
+    </div>
+    <div class="head-tools">
+      <label class="search-box">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        <input id="q" type="search" placeholder="搜索书名 / 学科" autocomplete="off">
+      </label>
+      <button class="icon-btn" id="themeBtn" title="切换深色模式" aria-label="切换深色模式">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="filters" id="filters"></div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+  <p class="empty" id="empty" hidden>没有找到匹配的教材</p>
+
+  <footer class="foot">
+    <span>共 <b id="cnt">0</b> 册 · 逐页扫描版在线阅读，支持目录跳转、全文检索与进度记忆</span>
+    <span>仅供学习参考 · 版权归人民卫生出版社所有</span>
+  </footer>
+</main>
+
+<script src="assets/js/library.js"></script>
+</body>
+</html>
